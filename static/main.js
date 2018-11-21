@@ -67,13 +67,17 @@ function getNextStory(msg){
     $.post('sms', {
         body: msg,
         from: getPhoneNumber()
-    }, function(data, status){
+    }, function(xData, status){
         // debug, log the status
         console.log('Story: ' + status);
 
         // parse the TwiML server response into simple strings
-        data = $(data).find("Response").html();
-        data = data.split('</Message><Message>');
+        var data = $(xData).find("Response").html();
+        try{
+            data = data.split('</Message><Message>');        	
+        }catch(err){
+        	data = [xData.all[0].textContent];
+        }
         for(var i=0; i<data.length; i++){
             data[i] = data[i].replace(/\<(\/)?Message\>/gi, '');
             data[i] = data[i].replace(/\<(\/)?Response\>/gi, '');

@@ -72,7 +72,7 @@ function getNextStory(msg){
         console.log('Story: ' + status);
 
         // parse the TwiML server response into simple strings
-        data = data.all[0].innerHTML;
+        data = $(data).find("Response").html();
         data = data.split('</Message><Message>');
         for(var i=0; i<data.length; i++){
             data[i] = data[i].replace(/\<(\/)?Message\>/gi, '');

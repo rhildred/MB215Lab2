@@ -12,3 +12,5 @@ To Run the code here:
 1. Add counting the number of tries to the over and under game
 2. Make a rock, paper scissors game using the pattern from last week's array question
 3. Make an odds and evens game. You will need to research the rules.
+
+See more [here](EventsAndObjects.pdf)

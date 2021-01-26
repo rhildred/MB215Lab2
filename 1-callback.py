@@ -3,8 +3,10 @@ from flask import render_template
 from flask import Response
 from flask import request
 
+# we make a flask object
 app = Flask(__name__)
 
+# the sms service calls this "web hook"
 @app.route("/sms",  methods=['POST'])
 def sms():
     nPhone = request.form["from"]
@@ -16,4 +18,6 @@ def sms():
 def server():  
     return render_template('index.html')
 
-app.run()
+# run the flask object now that we have subscribed
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8081)
